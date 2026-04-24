@@ -1,21 +1,20 @@
-# Online Retail & Hospitality Analytics
+# Online Retail Analytics — RFM Segmentation & Cohort Analysis
 [![Python](https://img.shields.io/badge/Python-3.8+-green)](https://python.org)
 [![SQL](https://img.shields.io/badge/SQL-6%20Analytical%20Queries-blue)](sql/)
-[![scikit-learn](https://img.shields.io/badge/ML-scikit--learn-orange)](https://scikit-learn.org)
+[![Dataset](https://img.shields.io/badge/Dataset-UCI%20Online%20Retail%20541K%20rows-orange)](https://archive.ics.uci.edu/dataset/352/online+retail)
 
 ## Business Problem
 
 > *Which customers are most valuable, how do we segment them for targeted campaigns, and where is revenue growing or declining?*
 
-This project applies RFM segmentation, cohort retention analysis, and SQL analytics to UK e-commerce transaction data. A second module predicts hotel booking cancellations using classification models — both are common data analytics deliverables in retail and hospitality.
+This project applies RFM segmentation, cohort retention analysis, and SQL analytics to 541K UK e-commerce transactions (2010–2011). The pipeline identifies high-value customer segments, tracks monthly revenue trends, and surfaces which products and markets drive growth.
 
 ## Dataset
 
 | Source | Details |
 |--------|---------|
 | [UCI Online Retail](https://archive.ics.uci.edu/dataset/352/online+retail) | 541K transactions, 4,372 customers, 2010–2011 |
-| [Kaggle Hotel Bookings](https://www.kaggle.com/datasets/jessemostipak/hotel-booking-demand) | 119K bookings, resort + city hotel |
-| Synthetic fallback | `eda_pipeline.py` auto-generates data if datasets not present |
+| Synthetic fallback | `eda_pipeline.py` auto-generates data if dataset not present |
 
 ## Key Outputs
 
@@ -35,8 +34,6 @@ This project applies RFM segmentation, cohort retention analysis, and SQL analyt
 |------|-------------|
 | `eda_pipeline.py` | EDA + RFM segmentation + cohort retention + 5 output charts |
 | `sql/retail_analysis.sql` | 6 SQL queries: revenue trend, RFM, products, repeat rate |
-| `final_online_retail.py` | Market basket analysis (Apriori algorithm) |
-| `hotel booking cancelling.py` | Cancellation prediction: Logistic Regression + Random Forest |
 
 ## SQL Queries Included
 
@@ -48,15 +45,6 @@ This project applies RFM segmentation, cohort retention analysis, and SQL analyt
 | Country revenue breakdown | GROUP BY + proportion | Where are customers located? |
 | Repeat purchase rate | CTE + conditional aggregation | How many customers return? |
 | Revenue by customer segment | Partition-level proportion | What's the Champions segment worth? |
-
-## Hotel Cancellation Model
-
-| Model | Accuracy | Precision | Recall |
-|-------|----------|-----------|--------|
-| Logistic Regression | 79% | 0.77 | 0.74 |
-| Random Forest | 86% | 0.85 | 0.83 |
-
-Top predictors: lead time, deposit type, market segment, previous cancellations.
 
 ## Quickstart
 
@@ -74,8 +62,6 @@ To use real UCI data, place `OnlineRetail.xlsx` in the repo root (free download,
 ```
 Online-Retail-Predictions/
 ├── eda_pipeline.py               # Main EDA + RFM + cohort analysis pipeline
-├── final_online_retail.py        # Market basket analysis (Apriori)
-├── hotel booking cancelling.py   # Hotel cancellation prediction
 ├── sql/
 │   └── retail_analysis.sql       # 6 analytical SQL queries
 ├── outputs/
@@ -90,4 +76,4 @@ Online-Retail-Predictions/
 
 ## Tools
 
-`Python 3.8` `Pandas` `scikit-learn` `Matplotlib` `Seaborn` `SQL (DuckDB)`
+`Python 3.8` `Pandas` `Matplotlib` `Seaborn` `SQL (DuckDB)`
